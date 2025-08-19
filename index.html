@@ -7,6 +7,8 @@
   <meta name="description" content="Buy in Lamai, Koh Samui—calm beaches, scenic hills, and excellent value. Explore vetted homes & villas with lifestyle and rental potential." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://lamai.homes/" />
+  <link rel="preconnect" href="https://kohsamui.investments">
+  <link rel="dns-prefetch" href="https://kohsamui.investments">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Lamai Homes • Calm Beaches, Strong Value" />
@@ -48,6 +50,10 @@
       background:var(--accent); color:#fff; text-decoration:none; font-weight:700;
       border:1px solid rgba(255,255,255,.12); margin-top:6px
     }
+    /* CTR additions */
+    .cta-wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px}
+    .cta-ghost{background:transparent;border:1px solid rgba(255,255,255,.55);color:#fff}
+    .fineprint{font-size:12px;opacity:.8;margin-top:6px}
     .badge{position:fixed; top:12px; left:12px; z-index:3; font-weight:800; letter-spacing:.2px;
       background:var(--glass); padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.15)}
     .foot{position:fixed; bottom:12px; right:12px; z-index:3; font-size:12px; opacity:.9;
@@ -68,9 +74,31 @@
         <div class="row"><span class="dot"></span><span>Appeal to couples & families seeking calmer stays—good medium-term demand.</span></div>
         <div class="row"><span class="dot"></span><span>Easy access to dining, gyms, markets, and beach clubs—without peak-area pricing.</span></div>
       </div>
-      <a class="cta" href="https://kohsamui.investments/?utm_source=lamai.homes&utm_medium=referral&utm_campaign=cta">
-        View Homes &nbsp;→
-      </a>
+
+      <!-- CTR: primary + secondary CTA + micro-copy -->
+      <div class="cta-wrap">
+        <a id="cta-primary" class="cta" href="https://kohsamui.investments/?utm_source=lamai.homes&utm_medium=referral&utm_campaign=cta">
+          View Homes &nbsp;→
+        </a>
+        <a id="cta-guide" class="cta cta-ghost" href="https://kohsamui.investments/guide.html?utm_source=lamai.homes&utm_medium=referral&utm_campaign=preview_guide">
+          Preview the Guide
+        </a>
+      </div>
+      <div class="fineprint">2-minute preview • Private intake available if you want tailored matches</div>
+
+      <!-- CTA click tracking -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function(){
+          var p = document.getElementById('cta-primary');
+          var g = document.getElementById('cta-guide');
+          if (p) p.addEventListener('click', function(){
+            try { gtag('event','cta_click',{event_category:'engagement',event_label:'lamai.homes_primary'}); } catch(e){}
+          });
+          if (g) g.addEventListener('click', function(){
+            try { gtag('event','cta_click',{event_category:'engagement',event_label:'lamai.homes_guide'}); } catch(e){}
+          });
+        });
+      </script>
     </div>
 
     <div class="foot">
